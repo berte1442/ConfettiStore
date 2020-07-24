@@ -1,0 +1,118 @@
+﻿@model IEnumerable<ConfettiStore.Models.Address>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="d-none d-md-block">
+    <i class="fas fa-house-user text-dark float-right" style="font-size:50px;"></i>
+    <ul class="breadcrumb">
+        <li><a href="#" onclick="location.href='@Url.Action("Index", "Home")'">Home</a></li>
+        <li>Addresses</li>
+    </ul>
+</div>
+
+<div class="navbar sticky-top backgroundColor navbar-position">
+    <div class="container @*col-sm-2*@">
+        <h1 class="opacity d-none d-sm-block"><i class="fas fa-house-user text-dark" style="font-size:30px;"></i>Addresses</h1>
+        <h2 class="opacity d-xs-block d-sm-none"><i class="fas fa-house-user text-dark" style="font-size:25px;"></i> Addresses</h2>
+    </div>
+    <div class="d-xs-none d-lg-block">
+        <div class="d-xs-none d-lg-block">
+            <div class="input-group">
+                <form id="address-search-note">
+                    <input class="form-control py-2 border-right-0 border" type="text" placeholder="Search..">
+                </form>
+                <span class="input-group-append">
+                    <a class="search-filter input-group-text py-2 border-left-0 opacity"><i class="fa fa-search "></i></a>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="@*col-sm-2*@ justify-content-end">
+        <button class="btn btn-success opacity" type="button" onclick="location.href='@Url.Action("Create", "Addresses")'">Create New</button>
+    </div>
+</div>
+
+<div class="table-resposive">
+    <table id="addressTable" class="table opacity">
+        <caption>Addresses</caption>
+        <thead class="thead-light">
+            <tr>
+                <th onclick="sortTable(0)">
+                    @Html.DisplayNameFor(model => model.AddressName)
+                </th>
+                <th onclick="sortTable(1)" scope="col" class="d-none d-lg-table-cell">
+                    @Html.DisplayNameFor(model => model.Address1)
+                </th>
+                <th onclick="sortTable(2)" scope="col" class="d-none d-lg-table-cell">
+                    @Html.DisplayNameFor(model => model.Address2)
+                </th>
+                <th onclick="sortTable(3)">
+                    @Html.DisplayNameFor(model => model.City)
+                </th>
+                <th onclick="sortTable(4)" scope="col" class="d-none d-lg-table-cell">
+                    @Html.DisplayNameFor(model => model.StateName)
+                </th>
+                <th onclick="sortTable(5)" scope="col" class="d-none d-lg-table-cell">
+                    @Html.DisplayNameFor(model => model.ZipCode)
+                </th>
+                <th onclick="sortTable(6)" scope="col" class="d-none d-lg-table-cell">
+                    @Html.DisplayNameFor(model => model.Note)
+                </th>
+                <th id="int" onclick="sortTable(7)" scope="col" class="d-none d-lg-table-cell">
+                    @Html.DisplayNameFor(model => model.DistanceMiles)
+                </th>
+                <th id="int" onclick="sortTable(8)">
+                    @Html.DisplayNameFor(model => model.Customer)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="address-tableBody">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.AddressName)
+                    </td>
+                    <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.Address1)
+                    </td>
+                    <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.Address2)
+                    </td>
+                    <td class="font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.City)
+                    </td>
+                    <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.StateName)
+                    </td>
+                    <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.ZipCode)
+                    </td>
+                    <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.Note)
+                    </td>
+                    <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.DistanceMiles)
+                    </td>
+                    <td class="font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.Customer.CustomerId)
+                    </td>
+                    <td align="right">
+                        <a asp-action="Details" asp-route-id="@item.AddressId"><i class="fas fa-edit"><label class="d-none d-md-block">Select</label></i></a><br />
+
+                        @*<a asp-action="Edit" asp-route-id="@item.AddressId"><i class="fas fa-edit"><label class="d-none d-md-block">Edit</label></i></a><br />
+                            <a asp-action="Details" asp-route-id="@item.AddressId"><i class="fas fa-info"><label class="d-none d-md-block">Info</label></i></a><br />
+                            <a asp-action="Delete" asp-route-id="@item.AddressId"><i class="fas fa-trash"><label class="d-none d-md-block">Delete</label></i></a>*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<div class="navbar fixed-bottom backgroundColor">
+    <button class="btn btn-primary d-xs-block d-lg-none" type="button" onclick="location.href='@Url.Action("Index", "Customers")'"><i class="fas fa-chevron-left"></i></button>
+    <button class="btn btn-primary d-xs-block d-lg-none" type="button" onclick="location.href='@Url.Action("Index", "CustomerOrders")'"><i class="fas fa-chevron-right"></i></button>
+</div>

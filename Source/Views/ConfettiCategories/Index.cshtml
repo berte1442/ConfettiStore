@@ -1,0 +1,74 @@
+﻿@model IEnumerable<ConfettiStore.Models.ConfettiCategory>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="d-none d-md-block">
+    <i class="fas fa-closed-captioning text-dark float-right" style="font-size:50px;"></i>
+    <ul class="breadcrumb">
+        <li><a href="#" onclick="location.href='@Url.Action("Index", "Home")'">Home</a></li>
+        <li>Confetti Categories</li>
+    </ul>
+</div>
+<div class="navbar sticky-top backgroundColor navbar-position">
+    <div class="container">
+        <h1 class="opacity d-none d-sm-block"><i class="fas fa-closed-captioning text-dark" style="font-size:30px;"></i> Confetti Categories</h1>
+        <h2 class="opacity d-xs-block d-sm-none"><i class="fas fa-closed-captioning text-dark" style="font-size:25px;"></i> Confetti Categories</h2>
+    </div>
+    <div class="d-xs-none d-lg-block">
+        <div class="d-xs-none d-lg-block">
+            <div class="input-group">
+                <form id="confettiCategory-search-note">
+                    <input class="form-control py-2 border-right-0 border" type="text" placeholder="Search..">
+                </form>
+                <span class="input-group-append">
+                    <a class="search-filter input-group-text py-2 border-left-0 opacity"><i class="fa fa-search "></i></a>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="justify-content-end">
+        <button class="btn btn-success opacity" type="button" onclick="location.href='@Url.Action("Create", "ConfettiCategories")'">Create New</button>
+    </div>
+</div>
+<div class="table-responsive">
+    <table id="confettiCategoryTable" class="table opacity">
+        <caption>Confetti Categories</caption>
+        <thead class="thead-light">
+            <tr>
+                <th id="int" onclick="sortTable(0, id)" >
+                    @Html.DisplayNameFor(model => model.Category)
+                </th>
+                <th id="int" onclick="sortTable(1, id)" >
+                    @Html.DisplayNameFor(model => model.Confetti)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="confettiCategory-tableBody">
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td class="font-weight-bold">
+                    @Html.DisplayFor(modelItem => item.Category.CategoryId)
+                </td>
+                <td class="font-weight-bold">
+                    @Html.DisplayFor(modelItem => item.Confetti.ConfettiId)
+                </td>
+                <td align="right">
+                    <a asp-action="Details" asp-route-id="@item.ConfettiCategoryId"><i class="fas fa-edit"><label class="d-none d-md-block">Select</label></i></a><br />
+
+                    @*<a asp-action="Edit" asp-route-id="@item.ConfettiCategoryId"><i class="fas fa-edit"><label class="d-none d-md-block">Edit</label></i></a><br />
+            <a asp-action="Details" asp-route-id="@item.ConfettiCategoryId"><i class="fas fa-info"><label class="d-none d-md-block">Info</label></i></a><br />
+            <a asp-action="Delete" asp-route-id="@item.ConfettiCategoryId"><i class="fas fa-trash"><label class="d-none d-md-block">Delete</label></i></a>*@
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+ </div>   
+    <div class="navbar fixed-bottom backgroundColor">
+        <button class="btn btn-primary d-xs-block d-lg-none" type="button" onclick="location.href='@Url.Action("Index", "Confettis")'"><i class="fas fa-chevron-left"></i></button>
+        <button class="btn btn-primary d-xs-block d-lg-none" type="button" onclick="location.href='@Url.Action("Index", "Categories")'"><i class="fas fa-chevron-right"></i></button>
+    </div>
+

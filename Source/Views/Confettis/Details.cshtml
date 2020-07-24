@@ -1,0 +1,42 @@
+﻿@model ConfettiStore.Models.Confetti
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="d-none d-md-block">
+    <i class="fas fa-star-of-life text-dark float-right" style="font-size:50px;"></i>
+    <ul class="breadcrumb">
+        <li><a href="#" onclick="location.href='@Url.Action("Index", "Home")'">Home</a></li>
+        <li><a href="#" onclick="location.href='@Url.Action("Index", "Confettis")'">Confetti</a></li>
+        <li>Details</li>
+    </ul>
+</div>
+<h1>Details</h1>
+
+<h4><i class="fas fa-star-of-life text-dark"></i> Confetti</h4>
+<hr />
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.ConfettiName)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.ConfettiName)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Active)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Active)
+    </dd>
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.Image)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.Image)
+    </dd>
+</dl>
+<div>
+    <a class="btn btn-success" asp-action="Edit" asp-route-id="@Model.ConfettiId">Edit</a>
+    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.ConfettiId">Delete</a>
+    <button class="btn btn-primary" type="button" onclick="location.href='@Url.Action("Index", "Confettis")'">Return To List</button>
+</div>

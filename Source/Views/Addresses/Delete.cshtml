@@ -1,0 +1,85 @@
+﻿@model ConfettiStore.Models.Address
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<div class="d-none d-md-block">
+    <i class="fas fa-user-friends text-dark float-right" style="font-size:50px;"></i>
+    <ul class="breadcrumb">
+        <li><a href="#" onclick="location.href='@Url.Action("Index", "Home")'">Home</a></li>
+        <li><a href="#" onclick="location.href='@Url.Action("Index", "Addresses")'">Addresses</a></li>
+        <li><a href="javascript:history.go(-1)" title="Return to the customer details">Details</a></li>
+        <li>Delete</li>
+    </ul>
+</div>
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this address?</h3>
+<div>
+    <h4>Address</h4>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.AddressName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.AddressName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Address1)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Address1)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Address2)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Address2)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.StateName)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.StateName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ZipCode)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Note)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Note)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.DistanceMiles)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.DistanceMiles)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer)
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Customer.CustomerId)
+        </dd class>
+    </dl>
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CustomerId" />
+        <a class="btn btn-secondary" asp-action="Details" asp-route-id="@Model.AddressId">Back</a>
+        <button class="btn btn-primary" type="button" onclick="location.href='@Url.Action("Index", "Addresses")'">Return To List</button>
+        <input type="submit" value="Delete" class="btn btn-danger" />
+
+    </form>
+</div>

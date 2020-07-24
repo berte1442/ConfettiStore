@@ -1,0 +1,67 @@
+﻿@model IEnumerable<ConfettiStore.Models.Status>
+
+@{
+    ViewData["Title"] = "Index";
+}
+    <div class="d-none d-md-block">
+        <i class="fas fa-truck-moving text-dark float-right" style="font-size:50px;"></i>
+        <ul class="breadcrumb">
+            <li><a href="#" onclick="location.href='@Url.Action("Index", "Home")'">Home</a></li>
+            <li>Status</li>
+        </ul>
+    </div>
+    <div class="navbar sticky-top backgroundColor navbar-position">
+        <div class="container">
+            <h1 class="opacity d-none d-sm-block"><i class="fas fa-truck-moving text-dark" style="font-size:30px;"></i> Status</h1>
+            <h2 class="opacity d-xs-block d-sm-none"><i class="fas fa-truck-moving text-dark" style="font-size:25px;"></i> Status</h2>
+        </div>
+        <div class="d-xs-none d-lg-block">
+            <div class="d-xs-none d-lg-block">
+                <div class="input-group">
+                    <form id="status-search-note">
+                        <input class="form-control py-2 border-right-0 border" type="text" placeholder="Search..">
+                    </form>
+                    <span class="input-group-append">
+                        <a class="search-filter input-group-text py-2 border-left-0 opacity"><i class="fa fa-search "></i></a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="justify-content-end">
+            <button class="btn btn-success opacity" type="button" onclick="location.href='@Url.Action("Create", "Status")'">Create New</button>
+        </div>
+    </div>
+<div class="table-responsive">
+    <table id="statusTable" class="table opacity">
+        <caption>Status</caption>
+        <thead class="thead-light">
+            <tr>
+                <th onclick="sortTable(0)">
+                    @Html.DisplayNameFor(model => model.StatusName)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="status-tableBody">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.StatusName)
+                    </td>
+                    <td align="right">
+                        <a asp-action="Details" asp-route-id="@item.StatusId"><i class="fas fa-edit"><label class="d-none d-md-block">Select</label></i></a><br />
+
+                        @*<a asp-action="Edit" asp-route-id="@item.StatusId"><i class="fas fa-edit"><label class="d-none d-md-block">Edit</label></i></a><br />
+                        <a asp-action="Details" asp-route-id="@item.StatusId"><i class="fas fa-info"><label class="d-none d-md-block">Info</label></i></a><br />
+                        <a asp-action="Delete" asp-route-id="@item.StatusId"><i class="fas fa-trash"><label class="d-none d-md-block">Delete</label></i></a>*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="navbar fixed-bottom backgroundColor">
+    <button class="btn btn-primary d-xs-block d-lg-none" type="button" onclick="location.href='@Url.Action("Index", "OrderItems")'"><i class="fas fa-chevron-left"></i></button>
+    <button class="btn btn-primary d-xs-block d-lg-none" type="button" onclick="location.href='@Url.Action("Index", "Confettis")'"><i class="fas fa-chevron-right"></i></button>
+</div>

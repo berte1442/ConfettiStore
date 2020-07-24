@@ -1,0 +1,84 @@
+﻿@model ConfettiStore.Models.Customer
+
+@{
+    ViewData["Title"] = "Create";
+}
+<div class="d-none d-md-block">
+    <i class="fas fa-user-friends text-dark float-right" style="font-size:50px;"></i>
+    <ul class="breadcrumb">
+        <li><a href="#" onclick="location.href='@Url.Action("Index", "Home")'">Home</a></li>
+        <li><a href="#" onclick="location.href='@Url.Action("Index", "Customers")'">Customers</a></li>
+        <li>Create</li>
+    </ul>
+</div>
+<h1>Create</h1>
+
+<h4><i class="fas fa-user-friends text-dark"></i> Customer</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="FirstName" class="control-label"></label>
+                <input asp-for="FirstName" class="form-control shadow-sm" />
+                <span asp-validation-for="FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="LastName" class="control-label"></label>
+                <input asp-for="LastName" class="form-control shadow-sm" />
+                <span asp-validation-for="LastName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Email" class="control-label"></label>
+                <input id="email" onchange="checkEmail(id)" asp-for="Email" class="form-control shadow-sm" />
+                <p id="email-check-alert"></p>
+                <span asp-validation-for="Email" class="text-danger"></span>
+                @*<div class="container d-md-none" style="margin: 10px 0px 6px 0px;">
+                        <button class="btn btn-success" type="button">@@yahoo.com</button>
+                        <button class="btn btn-success" type="button">@@gmail.com</button>
+                        <button class="btn btn-success" type="button">@@aol.com</button>
+                    </div>*@
+            </div>
+            <div class="form-group">
+                <label asp-for="Phone" class="control-label"></label>
+                <input onkeydown="phoneNum()" maxlength="12" asp-for="Phone" class="form-control shadow-sm" />
+                <p id="num-only">Numerical Input Only</p>
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ContactMethod" class="control-label"></label>
+                <input asp-for="ContactMethod" class="form-control shadow-sm" />
+                <span asp-validation-for="ContactMethod" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="OderReceivedVia" class="control-label"></label>
+                <input asp-for="OderReceivedVia" class="form-control shadow-sm" />
+                <span asp-validation-for="OderReceivedVia" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ReferredBy" class="control-label"></label>
+                <input asp-for="ReferredBy" class="form-control shadow-sm" />
+                <span asp-validation-for="ReferredBy" class="text-danger"></span>
+            </div>
+            @*<div class="form-group">
+                    <label asp-for="Created" class="control-label"></label>
+                    <input asp-for="Created" class="form-control" />
+                    <span asp-validation-for="Created" class="text-danger"></span>
+                </div>*@
+            <div class="form-group">
+                <button class="btn btn-primary " type="button" onclick="location.href='@Url.Action("Index", "Customers")'">Return To List</button>
+                <input type="submit" value="Create" class="btn btn-success" />
+            </div>
+        </form>
+    </div>
+</div>
+
+@*<div>
+        <button class="btn btn-success" type="button" onclick="location.href='@Url.Action("Index", "Customers")'">Back To List</button>
+        <a asp-action="Index">Back to List</a>
+    </div>*@
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

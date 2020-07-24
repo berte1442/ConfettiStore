@@ -1,0 +1,140 @@
+﻿@model IEnumerable<ConfettiStore.Models.CustomerOrder>
+
+@{
+    ViewData["Title"] = "Index";
+}
+    <div class="d-none d-md-block">
+        <i class="fas fa-box text-dark float-right" style="font-size:50px;"></i>
+        <ul class="breadcrumb">
+            <li><a href="#" onclick="location.href='@Url.Action("Index", "Home")'">Home</a></li>
+            <li>Orders</li>
+        </ul>
+    </div>
+    <div class="navbar sticky-top backgroundColor navbar-position">
+        <div class="container">
+            <h1 class="opacity d-none d-sm-block"><i class="fas fa-box text-dark" style="font-size:30px;"></i> Orders</h1>
+            <h2 class="opacity d-xs-block d-sm-none"><i class="fas fa-box text-dark" style="font-size:25px;"></i> Orders</h2>
+        </div>
+        <div class="d-xs-none d-lg-block">
+            <div class="d-xs-none d-lg-block">
+                <div class="input-group">
+                    <form id="order-search-note">
+                        <input class="form-control py-2 border-right-0 border" type="text" placeholder="Search..">
+                    </form>
+                    <span class="input-group-append">
+                        <a class="search-filter input-group-text py-2 border-left-0 opacity"><i class="fa fa-search "></i></a>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="@*col-sm-2*@ justify-content-end">
+            <button class="btn btn-success opacity" type="button" onclick="location.href='@Url.Action("Create", "CustomerOrders")'">Create New</button>
+        </div>
+    </div>
+<div class="table-responsive">
+    <table id="orderTable" class="table opacity">
+        <caption>Orders</caption>
+        <thead class="thead-light">
+            <tr>
+                <th id="int" onclick="sortTable(0, id)">
+                    @Html.DisplayNameFor(model => model.OrderId)
+                </th>
+                <th id="date" onclick="sortTable(1, id)" scope="col" class="d-none d-lg-table-cell">
+                    @Html.DisplayNameFor(model => model.SetupDate)
+                </th>
+                <th id="date" onclick="sortTable(2, id)">
+                    @Html.DisplayNameFor(model => model.PickUpDate)
+                </th>
+                <th onclick="sortTable(3)" scope="col" class="d-none d-lg-table-cell">
+                    @Html.DisplayNameFor(model => model.Note)
+                </th>
+                <th id="int" onclick="sortTable(4, id)" scope="col" class="d-none d-lg-table-cell">
+                    @Html.DisplayNameFor(model => model.RentPrice)
+                </th>
+                <th onclick="sortTable(5)" scope="col" class="d-none d-lg-table-cell">
+                    @Html.DisplayNameFor(model => model.Personalized)
+                </th>
+                <th onclick="sortTable(6)" scope="col" class="d-none d-lg-table-cell">
+                    @Html.DisplayNameFor(model => model.PersonalizedText)
+                </th>
+                <th id="int" onclick="sortTable(7, id)" scope="col" class="d-none d-lg-table-cell">
+                    @Html.DisplayNameFor(model => model.RentalAddress)
+                </th>
+                <th id="int" id="int" onclick="sortTable(8, id)">
+                    @Html.DisplayNameFor(model => model.Customer)
+                </th>
+                <th id="int" onclick="sortTable(9, id)" scope="col" class="d-none d-lg-table-cell">
+                    @Html.DisplayNameFor(model => model.EventType)
+                </th>
+                <th id="int" onclick="sortTable(10, id)" scope="col" class="d-none d-lg-table-cell">
+                    @Html.DisplayNameFor(model => model.Status)
+                </th>
+                <th id="date" onclick="sortTable(11, id)" scope="col" class="d-none d-lg-table-cell">
+                    @Html.DisplayNameFor(model => model.Modified)
+                </th>
+                <th id="date2" onclick="sortTable(12, id)" scope="col" class="d-none d-lg-table-cell">
+                    @Html.DisplayNameFor(model => model.Created)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="order-tableBody">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td scope="col" class="font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.OrderId)
+                    </td>
+                    <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.SetupDate)
+                    </td>
+                    <td class="font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.PickUpDate)
+                    </td>
+                    <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.Note)
+                    </td>
+                    <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.RentPrice)
+                    </td>
+                    <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.Personalized)
+                    </td>
+                    <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.PersonalizedText)
+                    </td>
+                    <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.RentalAddress.AddressId)
+                    </td>
+                    <td class="font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.Customer.CustomerId)
+                    </td>
+                    <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.EventType.EventTypeId)
+                    </td>
+                    <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.Status.StatusId)
+                    </td>
+                    <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.Modified)
+                    </td>
+                    <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.Created)
+                    </td>
+                    <td align="right">
+
+                        <a asp-action="Details" asp-route-id="@item.OrderId"><i class="fas fa-edit"><label class="d-none d-md-block">Select</label></i></a>
+
+                        @*<a asp-action="Edit" asp-route-id="@item.OrderId"><i class="fas fa-edit"><label class="d-none d-md-block">Edit</label></i></a><br />
+                        <a asp-action="Details" asp-route-id="@item.OrderId"><i class="fas fa-info"><label class="d-none d-md-block">Info</label></i></a><br />
+                        <a asp-action="Delete" asp-route-id="@item.OrderId"><i class="fas fa-trash"><label class="d-none d-md-block">Delete</label></i></a>*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="navbar fixed-bottom backgroundColor">
+    <button class="btn btn-primary d-xs-block d-lg-none" type="button" onclick="location.href='@Url.Action("Index", "Addresses")'"><i class="fas fa-chevron-left"></i></button>
+    <button class="btn btn-primary d-xs-block d-lg-none" type="button" onclick="location.href='@Url.Action("Index", "OrderAttachments")'"><i class="fas fa-chevron-right"></i></button>
+</div>

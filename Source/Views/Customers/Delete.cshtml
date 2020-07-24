@@ -1,0 +1,79 @@
+﻿@model ConfettiStore.Models.Customer
+
+@{
+    ViewData["Title"] = "Delete";
+}
+<div class="d-none d-md-block">
+    <i class="fas fa-user-friends text-dark float-right" style="font-size:50px;"></i>
+    <ul class="breadcrumb">
+        <li><a href="#" onclick="location.href='@Url.Action("Index", "Home")'">Home</a></li>
+        <li><a href="#" onclick="location.href='@Url.Action("Index", "Customers")'">Customers</a></li>
+        <li><a href="javascript:history.go(-1)" title="Return to the customer details">Details</a></li>
+        <li>Delete</li>
+    </ul>
+</div>
+<h1>Delete</h1>
+
+<h3>Are you sure you want to delete this customer?</h3>
+<div>
+    <h4><i class="fas fa-user-friends text-dark"></i> Customer</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Phone)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ContactMethod)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ContactMethod)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.OderReceivedVia)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.OderReceivedVia)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ReferredBy)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ReferredBy)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="CustomerId" />
+        <a class="btn btn-secondary" asp-action="Details" asp-route-id="@Model.CustomerId">Back</a>
+        <button class="btn btn-primary" type="button" onclick="location.href='@Url.Action("Index", "Customers")'">Return To List</button>
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        @*<a asp-action="Index">Back to List</a>*@
+    </form>
+</div>

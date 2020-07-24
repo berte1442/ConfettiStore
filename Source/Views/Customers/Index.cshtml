@@ -1,0 +1,114 @@
+﻿@model IEnumerable<ConfettiStore.Models.Customer>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="d-none d-md-block">
+    <i class="fas fa-user-friends text-dark float-right" style="font-size:50px;"></i>
+    <ul class="breadcrumb">
+        <li><a href="#" onclick="location.href='@Url.Action("Index", "Home")'">Home</a></li>
+        <li>Customers</li>
+    </ul>
+</div>
+<div class="navbar sticky-top backgroundColor navbar-position">
+    <div class="container">
+        <h1 class="opacity d-none d-sm-block"><i class="fas fa-user-friends text-dark" style="font-size:30px;"></i> Customers</h1>
+        <h2 class="opacity d-xs-block d-sm-none"><i class="fas fa-user-friends text-dark" style="font-size:25px;"></i> Customers</h2>
+    </div>
+    <div class="d-xs-none d-lg-block">
+        <div class="d-xs-none d-lg-block">
+            <div class="input-group">
+                <form id="customer-search-note">
+                    <input class="form-control py-2 border-right-0 border" type="text" placeholder="Search..">
+                </form>
+                <span class="input-group-append">
+                    <a class="search-filter input-group-text py-2 border-left-0 opacity"><i class="fa fa-search "></i></a>
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="justify-content-end">
+        <button class="btn btn-success opacity" type="button" onclick="location.href='@Url.Action("Create", "Customers")'">Create New</button>
+    </div>
+</div>
+<div class="table-responsive">
+    <table id="customerTable" class="table opacity">
+        <caption>Customers</caption>
+        <thead class="thead-light">
+            <tr>
+                <th id="int" onclick="sortTable(0, id)">
+                    @Html.DisplayNameFor(model => model.CustomerId)
+                </th>
+                <th onclick="sortTable(1)">
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th onclick="sortTable(2)">
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th onclick="sortTable(3)" scope="col" class="d-none d-lg-table-cell">
+                    @Html.DisplayNameFor(model => model.Email)
+                </th>
+                <th onclick="sortTable(4)" scope="col" class="d-none d-lg-table-cell">
+                    @Html.DisplayNameFor(model => model.Phone)
+                </th>
+                <th onclick="sortTable(5)" scope="col" class="d-none d-lg-table-cell">
+                    @Html.DisplayNameFor(model => model.ContactMethod)
+                </th>
+                <th onclick="sortTable(6)" scope="col" class="d-none d-lg-table-cell">
+                    @Html.DisplayNameFor(model => model.OderReceivedVia)
+                </th>
+                <th onclick="sortTable(7)" scope="col" class="d-none d-lg-table-cell">
+                    @Html.DisplayNameFor(model => model.ReferredBy)
+                </th>
+                <th id="date" onclick="sortTable(8, id)" scope="col" class="d-none d-lg-table-cell">
+                    @Html.DisplayNameFor(model => model.Created)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="customer-tableBody">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.CustomerId)
+                    </td>
+                    <td class="font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td class="font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.Email)
+                    </td>
+                    <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.Phone)
+                    </td>
+                    <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.ContactMethod)
+                    </td>
+                    <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.OderReceivedVia)
+                    </td>
+                    <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.ReferredBy)
+                    </td>
+                    <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
+                        @Html.DisplayFor(modelItem => item.Created)
+                    </td>
+                    <td align="right">
+                        @*<a asp-action="Edit" asp-route-id="@item.CustomerId"><i class="fas fa-edit"><label class="d-none d-md-block">Edit</label></i></a><br />*@
+                        <a asp-action="Details" asp-route-id="@item.CustomerId"><i class="fas fa-edit"><label class="d-none d-md-block">Select</label></i></a><br />
+                        @*<a asp-action="Delete" asp-route-id="@item.CustomerId"><i class="fas fa-trash"><label class="d-none d-md-block">Delete</label></i></a>*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="navbar fixed-bottom backgroundColor">
+    <button class="btn btn-primary d-xs-block d-lg-none" type="button" onclick="location.href='@Url.Action("Index", "Home")'"><i class="fas fa-chevron-left"></i></button>
+    <button class="btn btn-primary d-xs-block d-lg-none" type="button" onclick="location.href='@Url.Action("Index", "Addresses")'"><i class="fas fa-chevron-right"></i></button>
+</div>
+

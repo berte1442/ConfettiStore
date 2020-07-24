@@ -1,0 +1,30 @@
+﻿@model ConfettiStore.Models.EventType
+
+@{
+    ViewData["Title"] = "Details";
+}
+<div class="d-none d-md-block">
+    <i class="fas fa-birthday-cake text-dark float-right" style="font-size:50px;"></i>
+    <ul class="breadcrumb">
+        <li><a href="#" onclick="location.href='@Url.Action("Index", "Home")'">Home</a></li>
+        <li><a href="#" onclick="location.href='@Url.Action("Index", "EventTypes")'">Event Type</a></li>
+        <li>Details</li>
+    </ul>
+</div>
+<h1>Details</h1>
+
+<h4><i class="fas fa-birthday-cake text-dark"></i> Event Type</h4>
+<hr />
+<dl class="row">
+    <dt class="col-sm-2">
+        @Html.DisplayNameFor(model => model.EventName)
+    </dt>
+    <dd class="col-sm-10">
+        @Html.DisplayFor(model => model.EventName)
+    </dd>
+</dl>
+<div>
+    <a class="btn btn-success" asp-action="Edit" asp-route-id="@Model.EventTypeId">Edit</a>
+    <a class="btn btn-danger" asp-action="Delete" asp-route-id="@Model.EventTypeId">Delete</a>
+    <button class="btn btn-primary" type="button" onclick="location.href='@Url.Action("Index", "EventTypes")'">Return To List</button>
+</div>
