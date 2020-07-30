@@ -100,11 +100,11 @@
                     <li class="nav-item" style="margin: 2px 30px 2px 30px;">
                         <a class="nav-link text-dark" asp-area="" asp-controller="EventTypes" asp-action="Index">Event Types</a>
                     </li>
-                    <li style="margin: 0px 0px 0px 30px;">
+                    @*<li style="margin: 0px 0px 0px 30px;">
                         <form>
                             <input class="form-control py-2 border-right-0 border" type="text" placeholder="Search..">
                         </form>
-                    </li>
+                    </li>*@
                     @*<li>
                             <span class="input-group-append">
                                 <a class="search-filter input-group-text py-2 border-left-0 opacity"><i class="fa fa-search "></i></a>
@@ -155,29 +155,28 @@
     @RenderSection("Scripts", required: false)
 
     <!--all scripts below are for web hosting with Firebase-->
-
     <!-- The core Firebase JS SDK is always required and must be listed first -->
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
+    <!-- <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-app.js"></script>
 
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-         https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>
+     <!-- TODO: Add SDKs for Firebase products that you want to use
+          https://firebase.google.com/docs/web/setup#available-libraries -->
+    @*<script src="https://www.gstatic.com/firebasejs/7.17.1/firebase-analytics.js"></script>*@
 
-    <script>
+   @* <script>
         // Your web app's Firebase configuration
-        var firebaseConfig = {
-            apiKey: "AIzaSyA5iH6ZDRm-x96BHXLrnWwMGw-OX1prT1k",
-            authDomain: "confetti-4e460.firebaseapp.com",
-            databaseURL: "https://confetti-4e460.firebaseio.com",
-            projectId: "confetti-4e460",
-            storageBucket: "confetti-4e460.appspot.com",
-            messagingSenderId: "519202111564",
-            appId: "1:519202111564:web:da1d2885b9c93e654b74e9",
-            measurementId: "G-C8H61W6QCG"
+        //var firebaseConfig = {
+            //apiKey: "AIzaSyA5iH6ZDRm-x96BHXLrnWwMGw-OX1prT1k",
+            //authDomain: "confetti-4e460.firebaseapp.com",
+            //databaseURL: "https://confetti-4e460.firebaseio.com",
+            //projectId: "confetti-4e460",
+            //storageBucket: "confetti-4e460.appspot.com",
+            //messagingSenderId: "519202111564",
+            //appId: "1:519202111564:web:da1d2885b9c93e654b74e9",
+            //measurementId: "G-C8H61W6QCG"
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
         firebase.analytics();
-    </script>
+    @</script>*@
 </body>
 </html>
