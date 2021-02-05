@@ -23,6 +23,7 @@ namespace ConfettiStore.Controllers
         public async Task<IActionResult> Index()
         {
             var storeContext = _context.CustomerOrders.Include(o => o.RentalAddress).Include(o => o.Customer).Include(o => o.EventType).Include(o => o.Status);
+            ViewBag.CustomerID = new SelectList(_context.Customers, "ID", "FirstName");
             return View(await storeContext.ToListAsync());
         }
 

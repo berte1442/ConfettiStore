@@ -63,7 +63,8 @@
                     @Html.DisplayNameFor(model => model.DistanceMiles)
                 </th>
                 <th id="int" onclick="sortTable(8)">
-                    @Html.DisplayNameFor(model => model.Customer)
+                    Customer Name
+                    @*@Html.DisplayNameFor(model => model.Customer.FirstName)*@
                 </th>
                 <th></th>
             </tr>
@@ -97,7 +98,8 @@
                         @Html.DisplayFor(modelItem => item.DistanceMiles)
                     </td>
                     <td class="font-weight-bold">
-                        @Html.DisplayFor(modelItem => item.Customer.CustomerId)
+                        @Html.DisplayFor(modelItem => item.Customer.FirstName)
+                        @Html.DisplayFor(modelItem => item.Customer.LastName)
                     </td>
                     <td align="right">
                         <a asp-action="Details" asp-route-id="@item.AddressId"><i class="fas fa-edit"><label class="d-none d-md-block">Select</label></i></a><br />

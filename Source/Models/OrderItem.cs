@@ -15,6 +15,7 @@ namespace ConfettiStore.Models
         public int ConfettiId { get; set; }
 
         [ForeignKey("OrderId")]
+        [Display(Name="Customer Order #")]
         public virtual CustomerOrder CustomerOrder { get; set; }
 
         [ForeignKey("ConfettiId")]

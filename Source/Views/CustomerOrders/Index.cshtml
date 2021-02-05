@@ -61,10 +61,10 @@
                     @Html.DisplayNameFor(model => model.RentalAddress)
                 </th>
                 <th id="int" id="int" onclick="sortTable(8, id)">
-                    @Html.DisplayNameFor(model => model.Customer)
+                    @Html.DisplayNameFor(model => model.Customer.FirstName)
                 </th>
                 <th id="int" onclick="sortTable(9, id)" scope="col" class="d-none d-lg-table-cell">
-                    @Html.DisplayNameFor(model => model.EventType)
+                    @Html.DisplayNameFor(model => model.EventType.EventName)
                 </th>
                 <th id="int" onclick="sortTable(10, id)" scope="col" class="d-none d-lg-table-cell">
                     @Html.DisplayNameFor(model => model.Status)
@@ -104,16 +104,16 @@
                         @Html.DisplayFor(modelItem => item.PersonalizedText)
                     </td>
                     <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
-                        @Html.DisplayFor(modelItem => item.RentalAddress.AddressId)
+                        @Html.DisplayFor(modelItem => item.RentalAddress.AddressName)
                     </td>
                     <td class="font-weight-bold">
-                        @Html.DisplayFor(modelItem => item.Customer.CustomerId)
+                        @Html.DisplayFor(modelItem => item.Customer.FirstName)
                     </td>
                     <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
-                        @Html.DisplayFor(modelItem => item.EventType.EventTypeId)
+                        @Html.DisplayFor(modelItem => item.EventType.EventName)
                     </td>
                     <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
-                        @Html.DisplayFor(modelItem => item.Status.StatusId)
+                        @Html.DisplayFor(modelItem => item.Status.StatusName)
                     </td>
                     <td scope="col" class="d-none d-lg-table-cell font-weight-bold">
                         @Html.DisplayFor(modelItem => item.Modified)

@@ -16,6 +16,7 @@ namespace ConfettiStore.Models
         public DateTimeOffset Created { get; set; }
 
         [ForeignKey("OrderId")]
+        [Display(Name = "Order #")]
         public virtual CustomerOrder Order { get; set; }
     }
 }
